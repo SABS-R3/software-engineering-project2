@@ -158,7 +158,7 @@ Modelling module in weeks 6-7, so take this time to become familiar with how to 
 ## Structure of the project days
 
 Each project team is free to organise their interaction according to what works best for 
-the group. The one scheduled activiy is a daily 30 min "stand-up" meeting (to be 
+the group. The one scheduled activiy is a daily 20 min "stand-up" meeting (to be 
 scheduled) for each group with the module coordinator ([Martin 
 Robinson](mailto:martin.robinson@cs.ox.ac.uk)) and demonstrators.
 
