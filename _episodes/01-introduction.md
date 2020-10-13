@@ -1,12 +1,12 @@
 ---
-title: "Pharmokinetics Modelling Project"
+title: "Tree Generation App"
 teaching: 30
 exercises: 0
 questions:
 - "What is the project you will be working on?"
 - "How will the group projects work?"
 objectives:
-- "Explain the background and the project you will be doing for the next 3 days."
+- "Explain the background of the project."
 - "How each group will work together."
 - "Assessment deliverables"
 keypoints:
@@ -16,164 +16,225 @@ keypoints:
 - "Submit your GitHub repository for assessment by 5:30pm Friday 23rd September."
 ---
 
-# Pharmokinetic Modelling
+This project will get you to apply what you have learnt during this module (software 
+engineering best practices, packaging, testing, continuous integration etc.), to a new 
+technology domain, that of front-end web development. You will find that many of the 
+concepts are the same, but of course all the details (e.g. language syntax, tools) are 
+quite different.
 
-The field of Pharmokinetics (PK) provides a quantitative basis for describing the 
-delivery of a drug to a patient, the diffusion of that drug through the plasma/body 
-tissue, and the subsequent clearence of the drug from the patient's system. PK is used 
-to ensure that there is sufficient concentration of the drug to maintain the required 
-effecicy of the drug, while ensuring that the concentration levels remain below the 
-toxic threshold (See Fig 1). Pharmokinetic (PK) models are often combined with 
-Pharmodynamic (PD) models, which model the positive effects of the drug, such as the 
-binding of a drug to the biological target, and/or undesirable side effects, to form a 
-full PKPD model of the drug-body interaction. This project will only focus on PK, 
-neglecting the interaction with a PD model.
+During the week, you will work in groups to implement a single page web application 
+using Javascript, Vue.js and the Nuxt framework, deploying it to a static web-page 
+hosted on GitHub pages. The web application will allow users to generate and visualise 
+branching tree structures using L-Systems.
 
-<img src="../fig/pk1.jpg" alt="Fig 1" width="700"/>
+The material below will give you some "getting started" information on each of these 
+topics, and will provide you with some links to official documentation, or other further 
+information, to allow you to implement the project.
 
-PK enables the following processes to be quantified:
+There is also a "getting started" template project located 
+[here](https://github.com/SABS-R3/2020-software-engineering-project2-treegen) which you 
+can use, more description on this is provided below in the Nuxt section.
 
-- Absorption
-- Distribution
-- Metabolism
-- Excretion
+## Tree Modelling with L-Systems
 
-These are often referred to as ADME, and taken together discribe the drug concentration 
-in the body when medicine is prescribed. These ADME processes are typically described by 
-zeroth-order or first-order *rate* reactions modelling the dynamics of the quantity of 
-drug $q$, with a given rate parameter $k$, for example:
+[*The Algorithmic Beauty of Plants*](http://algorithmicbotany.org/papers/#abop), a 
+textbook from 1990, is concerned with two main factors that organise plant structures, 
+that of *developmental algorithms* that describe plant development in time, and that of 
+*self-similarity*, where each individual element of a shape is similar to the whole. 
 
-$$
-\frac{dq}{dt} = -k^*,
-$$
+The book starts by introducing 
+[L-Systems](http://algorithmicbotany.org/papers/abop/abop-ch1.pdf), introduced in 1968 
+by Lindenmayer, which provides a formal language for describing the evolution of plant 
+geometry over multiple iterations. This is a well-known language for plant generation 
+and is widely used in industry in programs such as 
+[SpeedTree](https://store.speedtree.com/) and [X-frog](http://xfrog.com/). [Chapter 
+2](http://algorithmicbotany.org/papers/abop/abop-ch2.pdf) covers the application of 
+L-systems in the generation of branching patterns in trees, and gives a number of 
+different examples.
 
-$$
-\frac{dq}{dt} = -k q.
-$$
+L-systems are a popular method for the automatic generation of beautiful fractal 
+patterns, particularly for generation of patterns that exist in biology, and have been 
+implemented in many different computer languages. Javascript is no exception, and there 
+are [Javascript L-system libraries](https://github.com/nylki/lindenmayer), as well as 
+online tutorials of [visualising 
+L-systems](https://eng.qualia.com/drawing-fractals-in-the-browser-with-l-systems-and-es6-6cecfd74e084)
+in the 
+[browser](https://hardlikesoftware.com/weblog/2008/01/23/l-systems-in-javascript-using-canvas/)
 
-The body itself is modelled as one or more *compartments*, each of which is defined as a 
-kinetically homogenous unit (these compartments do not relate to specific organs in the 
-body, unlike Physiologically based pharmacokinetic, PBPK, modeling). There is typically 
-a main *central* compartment into which the drug is administered and from which the drug 
-is excreated from the body, combined with zero or more *peripheral* compartments to 
-which the drug can be distributed to/from the central compartment (See Fig 2). Each 
-peripheral compartments is only connected to the central compartment.
+## Javascript, Node.js and npm
 
-<img src="../fig/pk2.svg" alt="Fig 2" width="400"/>
+Javascript is a multi-paradigm language that support object orientated, functional and 
+imperative programming styles. It is one of the core technologies of the world wide web, 
+and most web browsers execute Javascript code alongside rendering HTML. Largely due to 
+its dominance on the web, it is one of the most widely used programming languages, and 
+there exist many 
+[tutorials]((https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/JavaScript_basics) 
+and [reference](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference) 
+materials that you can use to become familiar with the language.  Similar to Python, it 
+supports dynamic typing, and also similar to Python the user does not need to explicitly 
+use a compiler to convert Javascript to an executable. Rather, Javascript is 
+[just-in-time (JIT)](https://en.wikipedia.org/wiki/Just-in-time_compilation) compiled to 
+bytecode during execution, and the bytecode is then run on a virtual machine.
 
-The following example PK model describes the two-compartment model shown diagramatically 
-in Fig 2. The time-dependent variables to be solved are the drug quantity in the central 
-and peripheral compartments, $q_c$ and $q_{p1}$ (units: [ng]) respectivly.
+A [Javascript](https://www.javascript.com/) runtime is a virtual machine that can 
+interpret and execute a computer program written in Javascript. A number of these 
+runtimes exist for various browsers, for example the Google V8 engine for Google Chrome. 
+[Node.js](https://nodejs.org/en/docs/) is a runtime for executing Javascript on your 
+computer, separate from any browser (although it is itself built on Chrome's V8 engine). 
+The primary difference between Node.js and any browser-based runtime is that Node.js 
+programs have access to the filesystem and the native environment of your computer, 
+while Javascript programs running in a browser are sandboxed away from the rest of your 
+computer, and instead have access to the [Document Object Model 
+(DOM)](https://www.w3schools.com/js/js_htmldom.asp), a tree representation of the 
+currently loaded web-page. 
 
-$$
-\frac{dq_c}{dt} = \text{Dose}(t) - \frac{q_c}{V_c} CL 
-- Q_{p1} \left ( \frac{q_c}{V_c} - \frac{q_{p1}}{V_{p1}} \right ),
-$$
+To develop a web application using Javascript and Vue, you first need to install 
+[Node.js](https://nodejs.org/en/) on your computer. In Ubuntu from version 16.04, one of 
+the easiest ways to do this is to use the `snap` command to install one of the 
+[NodeSource](https://github.com/nodesource/distributions/blob/master/README.md) 
+distributions, which will allow you to install a specific Node.js version. At the time 
+of writing the latest Long Term Support (LTE) version of Node.js is 12.19.0, and you can 
+install this version via snap by typing on the command-line:
 
-$$
-\frac{dq_{p1}}{dt} =  Q_{p1} \left ( \frac{q_c}{V_c} - \frac{q_{p1}}{V_{p1}} \right ).
-$$
+~~~
+sudo snap install node --classic --channel=12
+~~~
+{: .language-bash}
 
-This model describes an *intravenious bolus* dosing protocol, with a linear clearence 
-from the central compartment (non-linear clearence processes are also possible, but not 
-considered here). The input paramters to the model are:
-- The dose function $\text{Dose}(t)$, which could consist of instantaneous doses of $X$ 
-  ng of the drug at one or more time points, or a steady application of $X$ ng per hour 
-  over a given time period, or some combination.
-- $V_c$ [mL], the volume of the central compartment
-- $V_{p1}$ [mL], the volume of the first peripheral compartment
-- $V_{p1}$ [mL], the volume of the peripheral compartment 1
-- $CL$ [mL/h], the clearance/elimination rate from the central compartment
-- $Q_{p1}$ [mL/h], the transition rate between central compartment and peripheral 
-  compartment 1
+Alternatively (e.g. if snap is not available), on an Ubuntu system you can type:
 
-Another example model we will show uses *subcutaneous* dosing, and adds an additional 
-compartment from which the drug is absorbed to the central compartment:
+~~~
+curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
+sudo apt-get install -y nodejs
+~~~
+{: .language-bash}
 
-$$
-\frac{dq_0}{dt} = \text{Dose}(t) - k_a q_0,
-$$
+`npm` is a package manager for Node.js, similar to the `pip` package manager for 
+Python. It will be installed as part of your Node.js install, and should be available on 
+your command-line.
 
-$$
-\frac{dq_c}{dt} = k_a q_0  - \frac{q_c}{V_c} CL 
-- Q_{p1} \left ( \frac{q_c}{V_c} - \frac{q_{p1}}{V_{p1}} \right ),
-$$
+## Vue and the Nuxt framework
 
-$$
-\frac{dq_{p1}}{dt} =  Q_{p1} \left ( \frac{q_c}{V_c} - \frac{q_{p1}}{V_{p1}} \right ),
-$$
+There exist a number of application frameworks for Javascript, which can be utilised to 
+make the process of developing a web application much easier. A framework takes care of 
+the overall design of the application itself, typically following a variant on the 
+[model-view-controller](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller) 
+paradigm, allowing you to focus on only implementing the functionality of the 
+application itself. Using a framework also allows you to make use of the often large 
+ecosystem of tools and libraries developed for that particular framework (for example 
+the [Veutify](https://vuetifyjs.com/en/) UI component library for Vue).
 
-where $k_a$ [/h] is the “absorption” rate for the s.c dosing.
+[Vue.js](https://vuejs.org/) is a Javascript framework for building user interfaces. 
+Similar to other Javascript UI frameworks like [React](https://reactjs.org/), a 
+developer using the Vue frameworks writes a number of *components* using HTML templates 
+and Javascript code, where a component is a separate logical item of your user 
+interface. Your UI is constructed by using a hierarchy of such components working 
+together. For example, a standard TODO list web application might be implemented by 
+writing a TODO list component that renders the whole list, containing multiple child 
+components rendering each item in that list. Each component has input properties, or 
+*props*, that are like input arguments defining how that component looks or behaves, as 
+well as an internal *state* that can be updated via user interaction, or interaction 
+with other components. Using these props and internal state, the component itself is 
+rendered using a HTML template defined by the developer. The Vue framework features 
+excellent [documentation](https://v3.vuejs.org/guide/introduction.html#getting-started), 
+as well as a [Command Line Interface (CLI)](https://cli.vuejs.org/) for creating and 
+maintaining Vue projects, and a global state management library called 
+[Vuex](https://vuex.vuejs.org/).
+
+[Nuxt.js](https://nuxtjs.org/) is a Vue framework that builds upon Vue by providing 
+developers with a set of plug-and-play modules that aim to make it easier to setup a 
+fully featured Vue project that follows best practices for Vue.js and Node.js, and which 
+includes useful developer features such as linting, testing and hot reloading (i.e. 
+updating the app, while running, with newly edited files). You can easily create a new 
+Nuxt application by using the `create-nuxt-app` tool, available via 
+[npx](https://blog.npmjs.org/post/162869356040/introducing-npx-an-npm-package-runner#:~:text=npx%20is%20a%20tool%20intended,executables%20hosted%20on%20the%20registry.) 
+(npx is available in your Node.js install) like so:
+
+~~~
+npx create-nuxt-app <project-name>
+~~~
+{: .language-bash}
+
+The `create-nuxt-app` will then ask you a series of questions about the type of project 
+you wish to create, then generate you a custom template project in which to start 
+writing the app itself. The [template 
+repo](https://github.com/SABS-R3/2020-software-engineering-project2-treegen) provided 
+for this project was created using `create-nuxt-app`, using the following options:
+
+- Project Name: `treegen`
+- Programming Language: `Javascript`
+- Package Manager: `Npm`
+- UI framework: `Vuetify.js`. See [here](https://vuetifyjs.com/en/) for more details on 
+  this framework.
+- Nuxt.js modules: none
+- Linting tools: `Prettier`
+- Testing framework: `Jest`. See [here](https://jestjs.io/) for more details on Jest, 
+  and [here](https://nuxtjs.org/examples/testing/) for an example of using it with Nuxt.
+- Rendering mode: `Single Page App`
+- Deployment target: `Static`
+- Development tools: `jsconfig.json` (recommended for VSCode)
+
+Once you have used `create-nuxt-app` to create your template application, you can run a 
+local test server to see the running application via your browser. Navigate to the root 
+directory of the application and use `npm` to install all the dependencies (defined by 
+the `package.json` file created by `create-nuxt-app`).
+
+~~~
+npm install
+~~~
+{: .language-bash}
+
+
+Then serve the application at [localhost:3000](localhost:3000) using:
+
+~~~
+npm run dev
+~~~
+{: .language-bash}
+
+
+## Deploy to GitHub Pages
+
+The Nuxt framework provides the option of deploying your web application to a static web 
+server. Luckily, GitHub provides a free and convenient static web server via [GitHub 
+Pages](https://pages.github.com/). Even more conveniently, Nuxt provides full details 
+on their [website](https://nuxtjs.org/faq/github-pages/) of how to deploy a Nuxt 
+application to Github Pages. They also show how this can be done automatically via your 
+Travis or Appveyor Continuous Integration (CI), although the same can be achieved via 
+GitHub actions as well.
 
 
 > ## Project Description
 >
-> Your group project is to design and implement a python library that can specify, solve 
-> and visualise the solution of a PK model. You might find it helpful to base this on a 
-> "starter" repository which you can clone from 
-> [https://github.com/sabs-r3/2020-software-engineering-projects-pk](https://github.com/sabs-r3/2020-software-engineering-projects-pk). 
->This contains a basic Python script that constructs a two-compartment PK model with 
->i.v. dosing, solves it using the Scipy 
->[`solve_ivp`](https://docs.scipy.org/doc/scipy/reference/generated/scipy.integrate.solve_ivp.html) 
->ODE solver, and then plots the results using [`Matplotlib`](https://matplotlib.org/). 
->It also contains the framework of a basic python package that can be installed using 
->`pip`. This package uses the `unittest` testing framework, and defines a few classes 
->`Model`, `Protocol`, and `Solution`. Note that you can feel free to use as much or as 
->little of this template repository as you like, it is a suggestion based on a specific 
->set of design decisions, and many other choices could be equal or superior to those 
->chosen in the provided template.
-> Your PK modelling library should ideally have the following functionality:
-> - pip installable
-> - github repository, with issues + PRs that fully document the development process
-> - unit testing with a good test coverage
-> - fully documented, e.g. README,  API documentation, OS license 
-> - continuous integration (e.g. Github actions) for automatic testing and documentation 
->   generation
-> - The ability to specify the form of the PK model, including the number of peripheral 
-    compartments, the type of dosing (bolus versus intravenious), and the dosing 
-    protocol. 
-> - Users can specify the protocol independently from the model (e.g. be 
-    able to solve a one and two compartment model for the same dosing protocol)
-> - Ability to solve for the drug quantity in each compartment over time, given a model 
->   and a protocol
-> - Ability to visualise the solution of a model, and to compare two different 
-    solutions.  
-> - Something else? Feel free to suggest alternative features.
+> Your group project is to design and implement a web application that allows the user 
+> to specify and visualise one or more of the fractal or biological patterns described 
+> in the textbook "The Algorithmic Beauty of Plants". The web application should feature 
+> UI controls to allow the user to choose patterns and/or parameters, and should be as 
+> user-friendly as possible, incorporating information on how to use the app and what 
+> each control is for, as well as background information on what pattern is being 
+> visualised. The amount of features you incorporate into your web app is up to you and 
+> what you feel comfortable implementing in the limited time you have (5 days). 
 >
+> Note that while the recommendation of this project is that you use the Nuxt framework, 
+> this is not a requirement and you can use whatever technology stack you wish.
+>
+> Your application should be well tested by automatic tests that are run on every commit 
+> by your CI, and be well commented and use a consistent coding style throughout. The 
+> latest version of the application should be deployed either to GitHub pages or another 
+> location, and ideally this should occur automatically on every commit to the GitHub 
+> repository. It should be clear from your documentation how to setup a development 
+> environment to further develop the application, how to run the tests, and how to 
+> deploy the application itself.
 {: .challenge}
 
 
-> ## Numerical solution of ODEs using Scipy
->
-> In the starter template, Scipy's 
-> [`solve_ivp`](https://docs.scipy.org/doc/scipy/reference/generated/scipy.integrate.solve_ivp.html) 
-is used to solve the set of ODE equations that define the PK model. Since we are using 
-linear PK, we could have used analytical solutions, but relying on an ODE solver allows 
-us to be more flexible if we wish to include non-linear models in the future. In 
-addition, you will need to be able to numerically solve ODE models for the Mathematical 
-Modelling module in weeks 6-7, so take this time to become familiar with how to use 
-`solve_ivp`.
-{: .callout}
-
-## Structure of the project days
-
-Each project team is free to organise their interaction according to what works best for 
-the group. The one scheduled activiy is a daily 20 min "stand-up" meeting (to be 
-scheduled) for each group with the module coordinator ([Martin 
-Robinson](mailto:martin.robinson@cs.ox.ac.uk)) and demonstrators.
-
 ## Hand-in
 
-Nothing needs to be physically handed-in for this assessment other than a URL for the 
-GitHub repository for each group. Your feedback and assessment for the software 
-engineering module will be based on this repository: the source code contained within, 
-the generated documentation, and the content of the issues and pull requests. The source 
-code should be conform to a consistent style throughout, and docstrings & comments 
-should be approprate so that the code can be easily read and understood. The 
-docuementation should be sufficient so that a new user could easily use the library. The 
-issues and pull requests should be sufficiently detailed so that a developer could have 
-joined the project half-way through and get up-to-speed on the current state of 
-development and what needs to be done.
+Your should hand-in your URL for the GitHub repository for each group, and the URL to 
+where your web application is deployed. Please email these, along with the names of 
+those in your group, to 
+[martin.robinson@cs.ox.ac.uk](mailto:martin.robinson@cs.ox.ac.uk) by 5:30pm on Friday 
+30th Oct.
 
 {% include links.md %}
 
