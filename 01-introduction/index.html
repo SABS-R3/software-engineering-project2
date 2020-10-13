@@ -1,0 +1,562 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="last-modified" content="2020-10-13 17:05:26 +0100">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- meta "search-domain" used for google site search function google_search() -->
+    <meta name="search-domain" value="">
+    <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap-theme.css" />
+    <link rel="stylesheet" type="text/css" href="../assets/css/lesson.css" />
+    <link rel="stylesheet" type="text/css" href="../assets/css/syntax.css" />
+
+    
+
+
+
+    <!-- Favicons for everyone -->
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="../assets/favicons/swc/apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/favicons/swc/apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/favicons/swc/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/favicons/swc/apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="60x60" href="../assets/favicons/swc/apple-touch-icon-60x60.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="../assets/favicons/swc/apple-touch-icon-120x120.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="../assets/favicons/swc/apple-touch-icon-76x76.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../assets/favicons/swc/apple-touch-icon-152x152.png" />
+    <link rel="icon" type="image/png" href="../assets/favicons/swc/favicon-196x196.png" sizes="196x196" />
+    <link rel="icon" type="image/png" href="../assets/favicons/swc/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/png" href="../assets/favicons/swc/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="../assets/favicons/swc/favicon-16x16.png" sizes="16x16" />
+    <link rel="icon" type="image/png" href="../assets/favicons/swc/favicon-128.png" sizes="128x128" />
+    <meta name="application-name" content="Software Carpentry - Group Project - Week 3 - DTP/NERC Students"/>
+    <meta name="msapplication-TileColor" content="#FFFFFF" />
+    <meta name="msapplication-TileImage" content="../assets/favicons/swc/mstile-144x144.png" />
+    <meta name="msapplication-square70x70logo" content="../assets/favicons/swc/mstile-70x70.png" />
+    <meta name="msapplication-square150x150logo" content="../assets/favicons/swc/mstile-150x150.png" />
+    <meta name="msapplication-wide310x150logo" content="../assets/favicons/swc/mstile-310x150.png" />
+    <meta name="msapplication-square310x310logo" content="../assets/favicons/swc/mstile-310x310.png" />
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+	<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+  <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      processEscapes: true
+    }
+  });
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+
+  <title>
+  Tree Generation App &ndash; Group Project - Week 3 - DTP/NERC Students
+  </title>  
+
+  </head>
+  <body>
+
+    
+
+
+<div class="panel panel-default life-cycle">
+  <div id="life-cycle" class="panel-body beta">
+    This lesson is being piloted (Beta version)
+  </div>
+</div>
+
+
+
+
+    <div class="container">
+      
+
+
+
+
+
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+
+      
+      
+      <a href="https://software-carpentry.org" class="pull-left">
+        <img class="navbar-logo" src="../assets/img/sabs-logo.png" alt="Software Carpentry logo" />
+      </a>
+      
+
+      
+      <a class="navbar-brand" href="../index.html">Home</a>
+
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+
+        
+        
+        <li class="dropdown">
+          <a href="../" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Episodes <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            
+            <li><a href="../01-introduction/index.html">Tree Generation App</a></li>
+            
+	    <li role="separator" class="divider"></li>
+            <li><a href="../aio/index.html">All in one page (Beta)</a></li>
+          </ul>
+        </li>
+	
+
+	
+        <li><a href="../LICENSE.html">License</a></li>
+      </ul>
+      <form class="navbar-form navbar-right" role="search" id="search" onsubmit="google_search(); return false;">
+        <div class="form-group">
+          <input type="text" id="google-search" placeholder="Search..." aria-label="Google site search">
+        </div>
+      </form>
+    </div>
+  </div>
+</nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="row">
+  <div class="col-xs-1">
+    <h3 class="text-left">
+      
+      <a href="../"><span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span><span class="sr-only">lesson home</span></a>
+      
+    </h3>
+  </div>
+  <div class="col-xs-10">
+    
+    <h3 class="maintitle"><a href="../">Group Project - Week 3 - DTP/NERC Students</a></h3>
+    
+  </div>
+  <div class="col-xs-1">
+    <h3 class="text-right">
+      
+      <a href="../"><span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span><span class="sr-only">lesson home</span></a>
+      
+    </h3>
+  </div>
+</div>
+
+<article>
+<div class="row">
+  <div class="col-md-1">
+  </div>
+  <div class="col-md-10">
+    <h1 class="maintitle">Tree Generation App</h1>
+  </div>
+  <div class="col-md-1">
+  </div>
+</div>
+
+
+<blockquote class="objectives">
+  <h2>Overview</h2>
+
+  <div class="row">
+    <div class="col-md-3">
+      <strong>Teaching:</strong> 30 min
+      <br/>
+      <strong>Exercises:</strong> 0 min
+    </div>
+    <div class="col-md-9">
+      <strong>Questions</strong>
+      <ul>
+	
+	<li><p>What is the project you will be working on?</p>
+</li>
+	
+	<li><p>How will the group projects work?</p>
+</li>
+	
+      </ul>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3">
+    </div>
+    <div class="col-md-9">
+      <strong>Objectives</strong>
+      <ul>
+	
+	<li><p>Explain the background of the project.</p>
+</li>
+	
+	<li><p>How each group will work together.</p>
+</li>
+	
+	<li><p>Assessment deliverables</p>
+</li>
+	
+      </ul>
+    </div>
+  </div>
+
+</blockquote>
+
+<p>This project will get you to apply what you have learnt during this module (software 
+engineering best practices, packaging, testing, continuous integration etc.), to a new 
+technology domain, that of front-end web development. You will find that many of the 
+concepts are the same, but of course all the details (e.g. language syntax, tools) are 
+quite different.</p>
+
+<p>During the week, you will work in groups to implement a single page web application 
+using Javascript, Vue.js and the Nuxt framework, deploying it to a static web-page 
+hosted on GitHub pages. The web application will allow users to generate and visualise 
+branching tree structures using L-Systems.</p>
+
+<p>The material below will give you some “getting started” information on each of these 
+topics, and will provide you with some links to official documentation, or other further 
+information, to allow you to implement the project.</p>
+
+<p>There is also a “getting started” template project located 
+<a href="https://github.com/SABS-R3/2020-software-engineering-project2-treegen">here</a> which you 
+can use, more description on this is provided below in the Nuxt section.</p>
+
+<h2 id="tree-modelling-with-l-systems">Tree Modelling with L-Systems</h2>
+
+<p><a href="http://algorithmicbotany.org/papers/#abop"><em>The Algorithmic Beauty of Plants</em></a>, a 
+textbook from 1990, is concerned with two main factors that organise plant structures, 
+that of <em>developmental algorithms</em> that describe plant development in time, and that of 
+<em>self-similarity</em>, where each individual element of a shape is similar to the whole.</p>
+
+<p>The book starts by introducing 
+<a href="http://algorithmicbotany.org/papers/abop/abop-ch1.pdf">L-Systems</a>, introduced in 1968 
+by Lindenmayer, which provides a formal language for describing the evolution of plant 
+geometry over multiple iterations. This is a well-known language for plant generation 
+and is widely used in industry in programs such as 
+<a href="https://store.speedtree.com/">SpeedTree</a> and <a href="http://xfrog.com/">X-frog</a>. <a href="http://algorithmicbotany.org/papers/abop/abop-ch2.pdf">Chapter 
+2</a> covers the application of 
+L-systems in the generation of branching patterns in trees, and gives a number of 
+different examples.</p>
+
+<p>L-systems are a popular method for the automatic generation of beautiful fractal 
+patterns, particularly for generation of patterns that exist in biology, and have been 
+implemented in many different computer languages. Javascript is no exception, and there 
+are <a href="https://github.com/nylki/lindenmayer">Javascript L-system libraries</a>, as well as 
+online tutorials of <a href="https://eng.qualia.com/drawing-fractals-in-the-browser-with-l-systems-and-es6-6cecfd74e084">visualising 
+L-systems</a>
+in the 
+<a href="https://hardlikesoftware.com/weblog/2008/01/23/l-systems-in-javascript-using-canvas/">browser</a></p>
+
+<h2 id="javascript-nodejs-and-npm">Javascript, Node.js and npm</h2>
+
+<p>Javascript is a multi-paradigm language that support object orientated, functional and 
+imperative programming styles. It is one of the core technologies of the world wide web, 
+and most web browsers execute Javascript code alongside rendering HTML. Largely due to 
+its dominance on the web, it is one of the most widely used programming languages, and 
+there exist many 
+[tutorials]((https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/JavaScript_basics) 
+and <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference">reference</a> 
+materials that you can use to become familiar with the language.  Similar to Python, it 
+supports dynamic typing, and also similar to Python the user does not need to explicitly 
+use a compiler to convert Javascript to an executable. Rather, Javascript is 
+<a href="https://en.wikipedia.org/wiki/Just-in-time_compilation">just-in-time (JIT)</a> compiled to 
+bytecode during execution, and the bytecode is then run on a virtual machine.</p>
+
+<p>A <a href="https://www.javascript.com/">Javascript</a> runtime is a virtual machine that can 
+interpret and execute a computer program written in Javascript. A number of these 
+runtimes exist for various browsers, for example the Google V8 engine for Google Chrome. 
+<a href="https://nodejs.org/en/docs/">Node.js</a> is a runtime for executing Javascript on your 
+computer, separate from any browser (although it is itself built on Chrome’s V8 engine). 
+The primary difference between Node.js and any browser-based runtime is that Node.js 
+programs have access to the filesystem and the native environment of your computer, 
+while Javascript programs running in a browser are sandboxed away from the rest of your 
+computer, and instead have access to the <a href="https://www.w3schools.com/js/js_htmldom.asp">Document Object Model 
+(DOM)</a>, a tree representation of the 
+currently loaded web-page.</p>
+
+<p>To develop a web application using Javascript and Vue, you first need to install 
+<a href="https://nodejs.org/en/">Node.js</a> on your computer. In Ubuntu from version 16.04, one of 
+the easiest ways to do this is to use the <code class="language-plaintext highlighter-rouge">snap</code> command to install one of the 
+<a href="https://github.com/nodesource/distributions/blob/master/README.md">NodeSource</a> 
+distributions, which will allow you to install a specific Node.js version. At the time 
+of writing the latest Long Term Support (LTE) version of Node.js is 12.19.0, and you can 
+install this version via snap by typing on the command-line:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>snap <span class="nb">install </span>node <span class="nt">--classic</span> <span class="nt">--channel</span><span class="o">=</span>12
+</code></pre></div></div>
+
+<p>Alternatively (e.g. if snap is not available), on an Ubuntu system you can type:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-sL</span> https://deb.nodesource.com/setup_12.x | <span class="nb">sudo</span> <span class="nt">-E</span> bash -
+<span class="nb">sudo </span>apt-get <span class="nb">install</span> <span class="nt">-y</span> nodejs
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">npm</code> is a package manager for Node.js, similar to the <code class="language-plaintext highlighter-rouge">pip</code> package manager for 
+Python. It will be installed as part of your Node.js install, and should be available on 
+your command-line.</p>
+
+<h2 id="vue-and-the-nuxt-framework">Vue and the Nuxt framework</h2>
+
+<p>There exist a number of application frameworks for Javascript, which can be utilised to 
+make the process of developing a web application much easier. A framework takes care of 
+the overall design of the application itself, typically following a variant on the 
+<a href="https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller">model-view-controller</a> 
+paradigm, allowing you to focus on only implementing the functionality of the 
+application itself. Using a framework also allows you to make use of the often large 
+ecosystem of tools and libraries developed for that particular framework (for example 
+the <a href="https://vuetifyjs.com/en/">Veutify</a> UI component library for Vue).</p>
+
+<p><a href="https://vuejs.org/">Vue.js</a> is a Javascript framework for building user interfaces. 
+Similar to other Javascript UI frameworks like <a href="https://reactjs.org/">React</a>, a 
+developer using the Vue frameworks writes a number of <em>components</em> using HTML templates 
+and Javascript code, where a component is a separate logical item of your user 
+interface. Your UI is constructed by using a hierarchy of such components working 
+together. For example, a standard TODO list web application might be implemented by 
+writing a TODO list component that renders the whole list, containing multiple child 
+components rendering each item in that list. Each component has input properties, or 
+<em>props</em>, that are like input arguments defining how that component looks or behaves, as 
+well as an internal <em>state</em> that can be updated via user interaction, or interaction 
+with other components. Using these props and internal state, the component itself is 
+rendered using a HTML template defined by the developer. The Vue framework features 
+excellent <a href="https://v3.vuejs.org/guide/introduction.html#getting-started">documentation</a>, 
+as well as a <a href="https://cli.vuejs.org/">Command Line Interface (CLI)</a> for creating and 
+maintaining Vue projects, and a global state management library called 
+<a href="https://vuex.vuejs.org/">Vuex</a>.</p>
+
+<p><a href="https://nuxtjs.org/">Nuxt.js</a> is a Vue framework that builds upon Vue by providing 
+developers with a set of plug-and-play modules that aim to make it easier to setup a 
+fully featured Vue project that follows best practices for Vue.js and Node.js, and which 
+includes useful developer features such as linting, testing and hot reloading (i.e. 
+updating the app, while running, with newly edited files). You can easily create a new 
+Nuxt application by using the <code class="language-plaintext highlighter-rouge">create-nuxt-app</code> tool, available via 
+<a href="https://blog.npmjs.org/post/162869356040/introducing-npx-an-npm-package-runner#:~:text=npx%20is%20a%20tool%20intended,executables%20hosted%20on%20the%20registry.">npx</a> 
+(npx is available in your Node.js install) like so:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npx create-nuxt-app &lt;project-name&gt;
+</code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">create-nuxt-app</code> will then ask you a series of questions about the type of project 
+you wish to create, then generate you a custom template project in which to start 
+writing the app itself. The <a href="https://github.com/SABS-R3/2020-software-engineering-project2-treegen">template 
+repo</a> provided 
+for this project was created using <code class="language-plaintext highlighter-rouge">create-nuxt-app</code>, using the following options:</p>
+
+<ul>
+  <li>Project Name: <code class="language-plaintext highlighter-rouge">treegen</code></li>
+  <li>Programming Language: <code class="language-plaintext highlighter-rouge">Javascript</code></li>
+  <li>Package Manager: <code class="language-plaintext highlighter-rouge">Npm</code></li>
+  <li>UI framework: <code class="language-plaintext highlighter-rouge">Vuetify.js</code>. See <a href="https://vuetifyjs.com/en/">here</a> for more details on 
+this framework.</li>
+  <li>Nuxt.js modules: none</li>
+  <li>Linting tools: <code class="language-plaintext highlighter-rouge">Prettier</code></li>
+  <li>Testing framework: <code class="language-plaintext highlighter-rouge">Jest</code>. See <a href="https://jestjs.io/">here</a> for more details on Jest, 
+and <a href="https://nuxtjs.org/examples/testing/">here</a> for an example of using it with Nuxt.</li>
+  <li>Rendering mode: <code class="language-plaintext highlighter-rouge">Single Page App</code></li>
+  <li>Deployment target: <code class="language-plaintext highlighter-rouge">Static</code></li>
+  <li>Development tools: <code class="language-plaintext highlighter-rouge">jsconfig.json</code> (recommended for VSCode)</li>
+</ul>
+
+<p>Once you have used <code class="language-plaintext highlighter-rouge">create-nuxt-app</code> to create your template application, you can run a 
+local test server to see the running application via your browser. Navigate to the root 
+directory of the application and use <code class="language-plaintext highlighter-rouge">npm</code> to install all the dependencies (defined by 
+the <code class="language-plaintext highlighter-rouge">package.json</code> file created by <code class="language-plaintext highlighter-rouge">create-nuxt-app</code>).</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm <span class="nb">install</span>
+</code></pre></div></div>
+
+<p>Then serve the application at <a href="localhost:3000">localhost:3000</a> using:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm run dev
+</code></pre></div></div>
+
+<h2 id="deploy-to-github-pages">Deploy to GitHub Pages</h2>
+
+<p>The Nuxt framework provides the option of deploying your web application to a static web 
+server. Luckily, GitHub provides a free and convenient static web server via <a href="https://pages.github.com/">GitHub 
+Pages</a>. Even more conveniently, Nuxt provides full details 
+on their <a href="https://nuxtjs.org/faq/github-pages/">website</a> of how to deploy a Nuxt 
+application to Github Pages. They also show how this can be done automatically via your 
+Travis or Appveyor Continuous Integration (CI), although the same can be achieved via 
+GitHub actions as well.</p>
+
+<blockquote class="challenge">
+  <h2 id="project-description">Project Description</h2>
+
+  <p>Your group project is to design and implement a web application that allows the user 
+to specify and visualise one or more of the fractal or biological patterns described 
+in the textbook “The Algorithmic Beauty of Plants”. The web application should feature 
+UI controls to allow the user to choose patterns and/or parameters, and should be as 
+user-friendly as possible, incorporating information on how to use the app and what 
+each control is for, as well as background information on what pattern is being 
+visualised. The amount of features you incorporate into your web app is up to you and 
+what you feel comfortable implementing in the limited time you have (5 days).</p>
+
+  <p>Note that while the recommendation of this project is that you use the Nuxt framework, 
+this is not a requirement and you can use whatever technology stack you wish.</p>
+
+  <p>Your application should be well tested by automatic tests that are run on every commit 
+by your CI, and be well commented and use a consistent coding style throughout. The 
+latest version of the application should be deployed either to GitHub pages or another 
+location, and ideally this should occur automatically on every commit to the GitHub 
+repository. It should be clear from your documentation how to setup a development 
+environment to further develop the application, how to run the tests, and how to 
+deploy the application itself.</p>
+</blockquote>
+
+<h2 id="hand-in">Hand-in</h2>
+
+<p>Your should hand-in your URL for the GitHub repository for each group, and the URL to 
+where your web application is deployed. Please email these, along with the names of 
+those in your group, to 
+<a href="mailto:martin.robinson@cs.ox.ac.uk">martin.robinson@cs.ox.ac.uk</a> by 5:30pm on Friday 
+30th Oct.</p>
+
+
+
+<blockquote class="keypoints">
+  <h2>Key Points</h2>
+  <ul>
+    
+    <li><p>The groups will be identical to the SABS year-long open source software groups.</p>
+</li>
+    
+    <li><p>Project management will consist of (at least) daily stand-ups and the use of GitHub issues and pull requests.</p>
+</li>
+    
+    <li><p>Submit your GitHub repository for assessment by 5:30pm Friday 23rd September.</p>
+</li>
+    
+  </ul>
+</blockquote>
+
+</article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="row">
+  <div class="col-xs-1">
+    <h3 class="text-left">
+      
+      <a href="../"><span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span><span class="sr-only">lesson home</span></a>
+      
+    </h3>
+  </div>
+  <div class="col-xs-10">
+    
+  </div>
+  <div class="col-xs-1">
+    <h3 class="text-right">
+      
+      <a href="../"><span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span><span class="sr-only">lesson home</span></a>
+      
+    </h3>
+  </div>
+</div>
+
+
+      
+      
+
+
+
+
+
+
+<footer>
+  <div class="row">
+    <div class="col-md-6 copyright" align="left">
+<!--
+	
+	Licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a> 2018–2020
+	by <a href="https://carpentries.org/">The Carpentries</a>
+        <br>
+        Licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a> 2016–2018
+	by <a href="https://software-carpentry.org">Software Carpentry Foundation</a>
+	
+-->
+    </div>
+    <div class="col-md-6 help-links" align="right">
+	<a href="/blob//CITATION" data-checker-ignore>Cite</a>
+	/
+	<a href="mailto:martin.robinson@cs.ox.ac.uk">Contact</a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12" align="center">
+      Using <a href="https://github.com/carpentries/styles/">The Carpentries style</a>
+      version <a href="https://github.com/carpentries/styles/releases/tag/v9.5.3">9.5.3</a>.
+    </div>
+  </div>
+</footer>
+
+      
+    </div>
+    
+<script src="../assets/js/jquery.min.js"></script>
+<script src="../assets/js/bootstrap.min.js"></script>
+<script src="../assets/js/lesson.js"></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-37305346-2', 'auto');
+  ga('send', 'pageview');
+</script>
+
+  </body>
+</html>
