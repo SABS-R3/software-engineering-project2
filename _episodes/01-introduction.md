@@ -3,17 +3,20 @@ title: "Tree Generation App"
 teaching: 30
 exercises: 0
 questions:
-- "What is the project you will be working on?"
-- "How will the group projects work?"
+- "For NERC/DPT students, What is the project you will be working on for week 3?"
 objectives:
 - "Explain the background of the project."
-- "How each group will work together."
-- "Assessment deliverables"
+- "Provide some getting started material on Javascript, Vue and the Nuxt framework."
+- "Provide a template repository to get groups stated using the Nuxt framework"
 keypoints:
-- "The groups will be identical to the SABS year-long open source software groups." 
-- "Project management will consist of (at least) daily stand-ups and the use of GitHub 
-  issues and pull requests."
-- "Submit your GitHub repository for assessment by 5:30pm Friday 23rd September."
+- "Your group project is to implement and deploy a web application to specify and 
+  visualise a number of fractal/biological patterns from the book \"The Algorithmic 
+  Beauty of Plants\"." 
+- "The suggested technology stack is Javascript, Vue and the Nuxt framework, although 
+  you have the freedom to choose your own stack."
+- "A template repository using Nuxt is provided 
+  [here](https://github.com/SABS-R3/2020-software-engineering-project2-treegen) for your 
+  convenience."
 ---
 
 This project will get you to apply what you have learnt during this module (software 
@@ -68,7 +71,7 @@ imperative programming styles. It is one of the core technologies of the world w
 and most web browsers execute Javascript code alongside rendering HTML. Largely due to 
 its dominance on the web, it is one of the most widely used programming languages, and 
 there exist many 
-[tutorials]((https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/JavaScript_basics) 
+[tutorials](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/JavaScript_basics) 
 and [reference](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference) 
 materials that you can use to become familiar with the language.  Similar to Python, it 
 supports dynamic typing, and also similar to Python the user does not need to explicitly 
