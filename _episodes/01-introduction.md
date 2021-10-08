@@ -107,6 +107,7 @@ so I'd encourage you to have a look at what is available.
 > GUI-specific testing libraries such as 
 [pytest-qt](https://pytest-qt.readthedocs.io/en/latest/intro.html), and/or use Mocking 
 to make mocks of your GUI objects, then write tests for the non-GUI parts of your code.
+{: .challenge}
 
 ## Hand-in
 
