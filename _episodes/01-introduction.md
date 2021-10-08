@@ -6,37 +6,33 @@ questions:
 - "For NERC/DPT students, What is the project you will be working on for week 3?"
 objectives:
 - "Explain the background of the project."
-- "Provide some getting started material on Javascript, Vue and the Nuxt framework."
-- "Provide a template repository to get groups stated using the Nuxt framework"
 keypoints:
-- "Your group project is to implement and deploy a web application to specify and 
+- "Your group project is to implement and deploy a Python application to specify and 
   visualise a number of fractal/biological patterns from the book \"The Algorithmic 
-  Beauty of Plants\"." 
-- "The suggested technology stack is Javascript, Vue and the Nuxt framework, although 
-  you have the freedom to choose your own stack."
-- "A template repository using Nuxt is provided 
-  [here](https://github.com/SABS-R3/2020-software-engineering-project2-treegen) for your 
-  convenience."
+  Beauty of Plants\"."
 ---
 
-This project will get you to apply what you have learnt during this module (software 
-engineering best practices, packaging, testing, continuous integration etc.), to a new 
-technology domain, that of front-end web development. You will find that many of the 
-concepts are the same, but of course all the details (e.g. language syntax, tools) are 
-quite different.
+A [recent survey](https://zenodo.org/record/495360#.YV8aDHVKhH5) of RCUK-funded research 
+being undertaken in 15 Russell Group universities found that 92% of researchers used 
+research software of some kind. However, the majority of these researchers are probably 
+unfamiliar with programming, or perhaps just Python in particular, so using a library 
+written in Python is not going to be a suitable option for most of the potential users 
+of your research software. 
 
-During the week, you will work in groups to implement a single page web application 
-using Javascript, Vue.js and the Nuxt framework, deploying it to a static web-page 
-hosted on GitHub pages. The web application will allow users to generate and visualise 
-branching tree structures using L-Systems.
+A graphical user interface (GUI) can make your research software accessible to everyone 
+with a computer. By increasing the base of potential users, it can ultimately increasing 
+both citations and impact.
 
-The material below will give you some "getting started" information on each of these 
-topics, and will provide you with some links to official documentation, or other further 
-information, to allow you to implement the project.
+There are generally two approaches to developing GUIs. One approach is to write a web 
+application written in Javascript that a user can view like a normal webpage using their 
+browser. This is a popular approach as the user does not need to install any software. 
+The other approach is to write a desktop application using one of the many GUI libraries 
+(e.g. [Qt](https://www.qt.io/). Python has a number of GUI libraries, so we will be 
+using this approach.
 
-There is also a "getting started" template project located 
-[here](https://github.com/SABS-R3/2020-software-engineering-project2-treegen) which you 
-can use, more description on this is provided below in the Nuxt section.
+During the week, you will work in groups to implement an easily installable desktop GUI
+using Python. The web application will allow users to generate and visualise branching 
+tree structures using L-Systems.
 
 ## Tree Modelling with L-Systems
 
@@ -64,180 +60,61 @@ L-systems](https://eng.qualia.com/drawing-fractals-in-the-browser-with-l-systems
 in the 
 [browser](https://hardlikesoftware.com/weblog/2008/01/23/l-systems-in-javascript-using-canvas/)
 
-## Javascript, Node.js and npm
+## Python GUI libraries
 
-Javascript is a multi-paradigm language that support object orientated, functional and 
-imperative programming styles. It is one of the core technologies of the world wide web, 
-and most web browsers execute Javascript code alongside rendering HTML. Largely due to 
-its dominance on the web, it is one of the most widely used programming languages, and 
-there exist many 
-[tutorials](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/JavaScript_basics) 
-and [reference](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference) 
-materials that you can use to become familiar with the language.  Similar to Python, it 
-supports dynamic typing, and also similar to Python the user does not need to explicitly 
-use a compiler to convert Javascript to an executable. Rather, Javascript is 
-[just-in-time (JIT)](https://en.wikipedia.org/wiki/Just-in-time_compilation) compiled to 
-bytecode during execution, and the bytecode is then run on a virtual machine.
+[These](https://dev.to/codesharedot/best-python-framework-for-building-a-desktop-application-and-gui-58n5) 
+[pages](https://docs.python-guide.org/scenarios/gui/) contain information about many 
+different Python GUI libraries and links to tutorials showing you how to use them. You 
+can use whichever library you wish, but note that 
+[Tkinter](https://docs.python.org/3/library/tkinter.html) has the advantage of being 
+part of the Python standard library and is thus the de-facto standard Python GUI 
+library. [PyQt](https://wiki.python.org/moin/PyQt) is also very popular as it is based 
+on the well known and well regarded [Qt](https://www.qt.io/) GUI framework for C++, and 
+can be used in conjunction with the [fman](https://build-system.fman.io/) build system.
 
-A [Javascript](https://www.javascript.com/) runtime is a virtual machine that can 
-interpret and execute a computer program written in Javascript. A number of these 
-runtimes exist for various browsers, for example the Google V8 engine for Google Chrome. 
-[Node.js](https://nodejs.org/en/docs/) is a runtime for executing Javascript on your 
-computer, separate from any browser (although it is itself built on Chrome's V8 engine). 
-The primary difference between Node.js and any browser-based runtime is that Node.js 
-programs have access to the filesystem and the native environment of your computer, 
-while Javascript programs running in a browser are sandboxed away from the rest of your 
-computer, and instead have access to the [Document Object Model 
-(DOM)](https://www.w3schools.com/js/js_htmldom.asp), a tree representation of the 
-currently loaded web-page. 
+## Packaging a python desktop application
 
-To develop a web application using Javascript and Vue, you first need to install 
-[Node.js](https://nodejs.org/en/) on your computer. In Ubuntu from version 16.04, one of 
-the easiest ways to do this is to use the `snap` command to install one of the 
-[NodeSource](https://github.com/nodesource/distributions/blob/master/README.md) 
-distributions, which will allow you to install a specific Node.js version. At the time 
-of writing the latest Long Term Support (LTE) version of Node.js is 12.19.0, and you can 
-install this version via snap by typing on the command-line:
+Its no use writing a GUI if it can only be used on a machine with Python already 
+installed, or only runs on Linux. Additional effort must be made to make it 
+cross-platform across Linux, Mac and Windows, and easily installed by anyone without 
+specific knowledge of Python tools such as `pip`.
 
-~~~
-sudo snap install node --classic --channel=12
-~~~
-{: .language-bash}
-
-Alternatively (e.g. if snap is not available), on an Ubuntu system you can type:
-
-~~~
-curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
-sudo apt-get install -y nodejs
-~~~
-{: .language-bash}
-
-`npm` is a package manager for Node.js, similar to the `pip` package manager for 
-Python. It will be installed as part of your Node.js install, and should be available on 
-your command-line.
-
-## Vue and the Nuxt framework
-
-There exist a number of application frameworks for Javascript, which can be utilised to 
-make the process of developing a web application much easier. A framework takes care of 
-the overall design of the application itself, typically following a variant on the 
-[model-view-controller](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller) 
-paradigm, allowing you to focus on only implementing the functionality of the 
-application itself. Using a framework also allows you to make use of the often large 
-ecosystem of tools and libraries developed for that particular framework (for example 
-the [Veutify](https://vuetifyjs.com/en/) UI component library for Vue).
-
-[Vue.js](https://vuejs.org/) is a Javascript framework for building user interfaces. 
-Similar to other Javascript UI frameworks like [React](https://reactjs.org/), a 
-developer using the Vue frameworks writes a number of *components* using HTML templates 
-and Javascript code, where a component is a separate logical item of your user 
-interface. Your UI is constructed by using a hierarchy of such components working 
-together. For example, a standard TODO list web application might be implemented by 
-writing a TODO list component that renders the whole list, containing multiple child 
-components rendering each item in that list. Each component has input properties, or 
-*props*, that are like input arguments defining how that component looks or behaves, as 
-well as an internal *state* that can be updated via user interaction, or interaction 
-with other components. Using these props and internal state, the component itself is 
-rendered using a HTML template defined by the developer. The Vue framework features 
-excellent [documentation](https://v3.vuejs.org/guide/introduction.html#getting-started), 
-as well as a [Command Line Interface (CLI)](https://cli.vuejs.org/) for creating and 
-maintaining Vue projects, and a global state management library called 
-[Vuex](https://vuex.vuejs.org/).
-
-[Nuxt.js](https://nuxtjs.org/) is a Vue framework that builds upon Vue by providing 
-developers with a set of plug-and-play modules that aim to make it easier to setup a 
-fully featured Vue project that follows best practices for Vue.js and Node.js, and which 
-includes useful developer features such as linting, testing and hot reloading (i.e. 
-updating the app, while running, with newly edited files). You can easily create a new 
-Nuxt application by using the `create-nuxt-app` tool, available via 
-[npx](https://blog.npmjs.org/post/162869356040/introducing-npx-an-npm-package-runner#:~:text=npx%20is%20a%20tool%20intended,executables%20hosted%20on%20the%20registry.) 
-(npx is available in your Node.js install) like so:
-
-~~~
-npx create-nuxt-app <project-name>
-~~~
-{: .language-bash}
-
-The `create-nuxt-app` will then ask you a series of questions about the type of project 
-you wish to create, then generate you a custom template project in which to start 
-writing the app itself. The [template 
-repo](https://github.com/SABS-R3/2020-software-engineering-project2-treegen) provided 
-for this project was created using `create-nuxt-app`, using the following options:
-
-- Project Name: `treegen`
-- Programming Language: `Javascript`
-- Package Manager: `Npm`
-- UI framework: `Vuetify.js`. See [here](https://vuetifyjs.com/en/) for more details on 
-  this framework.
-- Nuxt.js modules: none
-- Linting tools: `Prettier`
-- Testing framework: `Jest`. See [here](https://jestjs.io/) for more details on Jest, 
-  and [here](https://nuxtjs.org/examples/testing/) for an example of using it with Nuxt.
-- Rendering mode: `Single Page App`
-- Deployment target: `Static`
-- Development tools: `jsconfig.json` (recommended for VSCode)
-
-Once you have used `create-nuxt-app` to create your template application, you can run a 
-local test server to see the running application via your browser. Navigate to the root 
-directory of the application and use `npm` to install all the dependencies (defined by 
-the `package.json` file created by `create-nuxt-app`).
-
-~~~
-npm install
-~~~
-{: .language-bash}
-
-
-Then serve the application at [localhost:3000](localhost:3000) using:
-
-~~~
-npm run dev
-~~~
-{: .language-bash}
-
-
-## Deploy to GitHub Pages
-
-The Nuxt framework provides the option of deploying your web application to a static web 
-server. Luckily, GitHub provides a free and convenient static web server via [GitHub 
-Pages](https://pages.github.com/). Even more conveniently, Nuxt provides full details 
-on their [website](https://nuxtjs.org/faq/github-pages/) of how to deploy a Nuxt 
-application to Github Pages. They also show how this can be done automatically via your 
-Travis or Appveyor Continuous Integration (CI), although the same can be achieved via 
-GitHub actions as well.
+There are a number of third-party libraries for writing cross-platform Python 
+applications, two examples are [Pyinstaller](https://www.pyinstaller.org/), and 
+[fman](https://build-system.fman.io/). The former is a very flexible library for 
+bundling up any Python application into stand-alone executables for Windows, Linux, Mac 
+OS X, FreeBSD, Solaris and AIX. The latter is specific to bundling a Python/Qt desktop 
+GUI application. There are other similar libaries as well, such as 
+[py2app](https://py2app.readthedocs.io/en/latest/) and [py2exe](http://www.py2exe.org/), 
+so I'd encourage you to have a look at what is available.
 
 
 > ## Project Description
 >
-> Your group project is to design and implement a web application that allows the user 
-> to specify and visualise one or more of the fractal or biological patterns described 
-> in the textbook "The Algorithmic Beauty of Plants". The web application should feature 
-> UI controls to allow the user to choose patterns and/or parameters, and should be as 
-> user-friendly as possible, incorporating information on how to use the app and what 
-> each control is for, as well as background information on what pattern is being 
-> visualised. The amount of features you incorporate into your web app is up to you and 
-> what you feel comfortable implementing in the limited time you have (5 days). 
+> Your group project is to design and implement a cross-platform Python GUI desktop 
+> application that allows the user to specify and visualise one or more of the fractal 
+> or biological patterns described in the textbook "The Algorithmic Beauty of Plants". 
+> The web application should feature UI controls to allow the user to choose patterns 
+> and/or parameters, and should be as user-friendly as possible, incorporating 
+> information on how to use the app and what each control is for, as well as background 
+> information on what pattern is being visualised. The amount of features you 
+> incorporate into your app is up to you and what you feel comfortable implementing in 
+> the limited time you have (5 days). 
 >
-> Note that while the recommendation of this project is that you use the Nuxt framework, 
-> this is not a requirement and you can use whatever technology stack you wish.
->
-> Your application should be well tested by automatic tests that are run on every commit 
-> by your CI, and be well commented and use a consistent coding style throughout. The 
-> latest version of the application should be deployed either to GitHub pages or another 
-> location, and ideally this should occur automatically on every commit to the GitHub 
-> repository. It should be clear from your documentation how to setup a development 
-> environment to further develop the application, how to run the tests, and how to 
-> deploy the application itself.
-{: .challenge}
-
+> If you have time, it is well worth investigating common design patterns for GUIs, such 
+> as Model-View-Controller (MVC), Model-View-Presenter (MVP) or Model-View-ViewModel 
+> (MVVM). Also consider how you would test your software, you might want to look at 
+> GUI-specific testing libraries such as 
+[pytest-qt](https://pytest-qt.readthedocs.io/en/latest/intro.html), and/or use Mocking 
+to make mocks of your GUI objects, then write tests for the non-GUI parts of your code.
 
 ## Hand-in
 
-Your should hand-in your URL for the GitHub repository for each group, and the URL to 
-where your web application is deployed. Please email these, along with the names of 
-those in your group, to 
+Your should hand-in your URL for the GitHub repository for each group, and stand-alone 
+executables for Linux, Mac OS X and Windows (or as many operating systems as your 
+software supports). Please email these, along with the names of those in your group, to 
 [martin.robinson@cs.ox.ac.uk](mailto:martin.robinson@cs.ox.ac.uk) by 5:30pm on Friday 
-30th Oct.
+29th Oct.
 
 {% include links.md %}
 
