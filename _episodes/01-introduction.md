@@ -27,7 +27,7 @@ There are generally two approaches to developing GUIs. One approach is to write 
 application written in Javascript that a user can view like a normal webpage using their 
 browser. This is a popular approach as the user does not need to install any software. 
 The other approach is to write a desktop application using one of the many GUI libraries 
-(e.g. [Qt](https://www.qt.io/). Python has a number of GUI libraries, so we will be 
+(e.g. [Qt](https://www.qt.io/)). Python has a number of GUI libraries, so we will be 
 using this approach.
 
 During the week, you will work in groups to implement an easily installable desktop GUI
@@ -50,15 +50,6 @@ and is widely used in industry in programs such as
 2](http://algorithmicbotany.org/papers/abop/abop-ch2.pdf) covers the application of 
 L-systems in the generation of branching patterns in trees, and gives a number of 
 different examples.
-
-L-systems are a popular method for the automatic generation of beautiful fractal 
-patterns, particularly for generation of patterns that exist in biology, and have been 
-implemented in many different computer languages. Javascript is no exception, and there 
-are [Javascript L-system libraries](https://github.com/nylki/lindenmayer), as well as 
-online tutorials of [visualising 
-L-systems](https://eng.qualia.com/drawing-fractals-in-the-browser-with-l-systems-and-es6-6cecfd74e084)
-in the 
-[browser](https://hardlikesoftware.com/weblog/2008/01/23/l-systems-in-javascript-using-canvas/)
 
 ## Python GUI libraries
 
