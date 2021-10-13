@@ -1,5 +1,5 @@
 ---
-title: "Tree Generation App"
+title: "NERC/DTP week 3 group project"
 teaching: 30
 exercises: 0
 questions:
@@ -7,9 +7,9 @@ questions:
 objectives:
 - "Explain the background of the project."
 keypoints:
-- "Your group project is to implement and deploy a Python application to specify and 
-  visualise a number of fractal/biological patterns from the book \"The Algorithmic 
-  Beauty of Plants\"."
+- "Your group project is to implement and deploy a Python desktop GUI application based 
+  around a particular research project. A couple of suggested project are provided, or 
+  you can make up your own"
 ---
 
 A [recent survey](https://zenodo.org/record/495360#.YV8aDHVKhH5) of RCUK-funded research 
@@ -31,10 +31,12 @@ The other approach is to write a desktop application using one of the many GUI l
 using this approach.
 
 During the week, you will work in groups to implement an easily installable desktop GUI
-using Python. The web application will allow users to generate and visualise branching 
-tree structures using L-Systems.
+application using Python. Below are two possible projects that you can implement within 
+your application, or you could suggest something else.
 
-## Tree Modelling with L-Systems
+## Project 1 - Tree Modelling with L-Systems
+
+*suggested by Professor Gail Preston, Department of Plant Sciences* 
 
 [*The Algorithmic Beauty of Plants*](http://algorithmicbotany.org/papers/#abop), a 
 textbook from 1990, is concerned with two main factors that organise plant structures, 
@@ -50,6 +52,33 @@ and is widely used in industry in programs such as
 2](http://algorithmicbotany.org/papers/abop/abop-ch2.pdf) covers the application of 
 L-systems in the generation of branching patterns in trees, and gives a number of 
 different examples.
+
+For this project, your application will allow users to generate and visualise branching 
+tree structures using L-Systems.
+
+## Project 2 - Calculations for Planetary Reference models
+
+*suggested by Andrew Walker, Senior Research Fellow in Computational Geosciences, 
+Department of Earth Science*
+
+Planetary reference models typically describe the density, elasticity, and viscosity of 
+the interior of a planet, which is assumed to be spherically symmetric. This means that 
+these properties are described by one dimensional functions giving e.g. density as a 
+function of depth (or radius). These models are used for a wide range of purposes, for 
+example they allow the travel time of seismic waves from earthquakes to be calculated 
+and used to find earthquake locations from distant measurements of ground motion.
+
+The easiest calculations make use of the density and I suggest you start with that. Density can be used to compute the total mass below any particular depth, and this can be used to calculate the gravitational acceleration at that depth. This in turn can be used to calculate the pressure as a function of depth. Furthermore, the density distribution yields the planetary moment of inertia, which is a measure of how difficult it is to change the planets rotation rate. This can be measured and used to validate the planetary model.
+
+Commonly two approaches are used to parameterise properties as a function of depth. For Earth, the poster child model is the preliminary Earth reference model (PREM) developed by Dziewonski and Anderson (1981) where piecewise polynomials are used to describe the properties. Models like PREM are thus smooth between the handful of breakpoints which are chosen to coincide with major discontinuities (such as the boundary between the ocean and crust, or mantle and core).  Coefficients of the PREM polynomials can be found in Table 1 of Dziewonski and Anderson (1981). Many more recent models abandon the smoothness of piecewise polynomials and describe planets as a large collection of layers with constant properties. These are tabulated and values for depths between those provided are found by linear interpolation. Examples of this kind of model for Mars were collated ahead of data collection by the InSight mission. These models are shown in Figure 1 of  Lognonné et al. (2019). The underlying data can be downloaded from https://doi.org/10.5281/zenodo.1478804. It may be useful to note that these 'tabulated' models can also be represented by piecewise polynomials with many breakpoints and no quadratic or higher order terms. 
+
+Going beyond density-based calculations probably requires the use of additional tools. One potential extension is to use the TauP module in Obspy (https://docs.obspy.org/) to calculate travel times of seismic waves for a given reference model. Seismic wave velocities are parameterised in the same way as density (and can be calculated from the density and elasticity). 
+
+#### References
+
+Dziewonski, A. M., & Anderson, D. L. (1981). Preliminary reference Earth model. Physics of the Earth and Planetary Interiors, 25, 297–356.
+
+Lognonné, P., Banerdt, W.B., Giardini, D. et al. SEIS: Insight’s Seismic Experiment for Internal Structure of Mars. Space Sci Rev 215, 12 (2019). https://doi.org/10.1007/s11214-018-0574-6
 
 ## Python GUI libraries
 
@@ -68,7 +97,7 @@ can be used in conjunction with the [fman](https://build-system.fman.io/) build 
 Its no use writing a GUI if it can only be used on a machine with Python already 
 installed, or only runs on Linux. Additional effort must be made to make it 
 cross-platform across Linux, Mac and Windows, and easily installed by anyone without 
-specific knowledge of Python tools such as `pip`.
+specific knowledge of Python tools.
 
 There are a number of third-party libraries for writing cross-platform Python 
 applications, two examples are [Pyinstaller](https://www.pyinstaller.org/), and 
@@ -83,14 +112,14 @@ so I'd encourage you to have a look at what is available.
 > ## Project Description
 >
 > Your group project is to design and implement a cross-platform Python GUI desktop 
-> application that allows the user to specify and visualise one or more of the fractal 
-> or biological patterns described in the textbook "The Algorithmic Beauty of Plants". 
-> The web application should feature UI controls to allow the user to choose patterns 
-> and/or parameters, and should be as user-friendly as possible, incorporating 
-> information on how to use the app and what each control is for, as well as background 
-> information on what pattern is being visualised. The amount of features you 
-> incorporate into your app is up to you and what you feel comfortable implementing in 
-> the limited time you have (5 days). 
+> application based around a particular research project. You can use one the suggested 
+> projects or choose your own. The web application should feature UI controls to allow 
+> the user to choose different parameters, models etc., and should be as user-friendly a 
+> possible, incorporating information on how to use the app and what each control is 
+> for, as well as background information on what is being displayed/visualised. The 
+> amount of 
+>features you incorporate into your app is up to you and what you feel comfortable 
+>implementing in the limited time you have (5 days). 
 >
 > If you have time, it is well worth investigating common design patterns for GUIs, such 
 > as Model-View-Controller (MVC), Model-View-Presenter (MVP) or Model-View-ViewModel 
