@@ -19,7 +19,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta http-equiv="last-modified" content="2021-10-08 11:02:57 +0100">
+    <meta http-equiv="last-modified" content="2021-10-13 13:25:48 +0100">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- meta "search-domain" used for google site search function google_search() -->
     <meta name="search-domain" value="">
@@ -72,7 +72,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 
   <title>
-  Tree Generation App &ndash; Group Project - Week 3 - DTP/NERC Students
+  NERC/DTP week 3 group project &ndash; Group Project - Week 3 - DTP/NERC Students
   </title>  
 
   </head>
@@ -128,7 +128,7 @@
           <a href="../" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Episodes <span class="caret"></span></a>
           <ul class="dropdown-menu">
             
-            <li><a href="../01-introduction/index.html">Tree Generation App</a></li>
+            <li><a href="../01-introduction/index.html">NERC/DTP week 3 group project</a></li>
             
 	    <li role="separator" class="divider"></li>
             <li><a href="../aio/index.html">All in one page (Beta)</a></li>
@@ -191,7 +191,7 @@
   <div class="col-md-1">
   </div>
   <div class="col-md-10">
-    <h1 class="maintitle">Tree Generation App</h1>
+    <h1 class="maintitle">NERC/DTP week 3 group project</h1>
   </div>
   <div class="col-md-1">
   </div>
@@ -253,10 +253,12 @@ The other approach is to write a desktop application using one of the many GUI l
 using this approach.</p>
 
 <p>During the week, you will work in groups to implement an easily installable desktop GUI
-using Python. The web application will allow users to generate and visualise branching 
-tree structures using L-Systems.</p>
+application using Python. Below are two possible projects that you can implement within 
+your application, or you could suggest something else.</p>
 
-<h2 id="tree-modelling-with-l-systems">Tree Modelling with L-Systems</h2>
+<h2 id="project-1---tree-modelling-with-l-systems">Project 1 - Tree Modelling with L-Systems</h2>
+
+<p><em>suggested by Professor Gail Preston, Department of Plant Sciences</em></p>
 
 <p><a href="http://algorithmicbotany.org/papers/#abop"><em>The Algorithmic Beauty of Plants</em></a>, a 
 textbook from 1990, is concerned with two main factors that organise plant structures, 
@@ -272,6 +274,33 @@ and is widely used in industry in programs such as
 2</a> covers the application of 
 L-systems in the generation of branching patterns in trees, and gives a number of 
 different examples.</p>
+
+<p>For this project, your application will allow users to generate and visualise branching 
+tree structures using L-Systems.</p>
+
+<h2 id="project-2---calculations-for-planetary-reference-models">Project 2 - Calculations for Planetary Reference models</h2>
+
+<p><em>suggested by Andrew Walker, Senior Research Fellow in Computational Geosciences, 
+Department of Earth Science</em></p>
+
+<p>Planetary reference models typically describe the density, elasticity, and viscosity of 
+the interior of a planet, which is assumed to be spherically symmetric. This means that 
+these properties are described by one dimensional functions giving e.g. density as a 
+function of depth (or radius). These models are used for a wide range of purposes, for 
+example they allow the travel time of seismic waves from earthquakes to be calculated 
+and used to find earthquake locations from distant measurements of ground motion.</p>
+
+<p>The easiest calculations make use of the density and I suggest you start with that. Density can be used to compute the total mass below any particular depth, and this can be used to calculate the gravitational acceleration at that depth. This in turn can be used to calculate the pressure as a function of depth. Furthermore, the density distribution yields the planetary moment of inertia, which is a measure of how difficult it is to change the planets rotation rate. This can be measured and used to validate the planetary model.</p>
+
+<p>Commonly two approaches are used to parameterise properties as a function of depth. For Earth, the poster child model is the preliminary Earth reference model (PREM) developed by Dziewonski and Anderson (1981) where piecewise polynomials are used to describe the properties. Models like PREM are thus smooth between the handful of breakpoints which are chosen to coincide with major discontinuities (such as the boundary between the ocean and crust, or mantle and core).  Coefficients of the PREM polynomials can be found in Table 1 of Dziewonski and Anderson (1981). Many more recent models abandon the smoothness of piecewise polynomials and describe planets as a large collection of layers with constant properties. These are tabulated and values for depths between those provided are found by linear interpolation. Examples of this kind of model for Mars were collated ahead of data collection by the InSight mission. These models are shown in Figure 1 of  Lognonné et al. (2019). The underlying data can be downloaded from https://doi.org/10.5281/zenodo.1478804. It may be useful to note that these ‘tabulated’ models can also be represented by piecewise polynomials with many breakpoints and no quadratic or higher order terms.</p>
+
+<p>Going beyond density-based calculations probably requires the use of additional tools. One potential extension is to use the TauP module in Obspy (https://docs.obspy.org/) to calculate travel times of seismic waves for a given reference model. Seismic wave velocities are parameterised in the same way as density (and can be calculated from the density and elasticity).</p>
+
+<h4 id="references">References</h4>
+
+<p>Dziewonski, A. M., &amp; Anderson, D. L. (1981). Preliminary reference Earth model. Physics of the Earth and Planetary Interiors, 25, 297–356.</p>
+
+<p>Lognonné, P., Banerdt, W.B., Giardini, D. et al. SEIS: Insight’s Seismic Experiment for Internal Structure of Mars. Space Sci Rev 215, 12 (2019). https://doi.org/10.1007/s11214-018-0574-6</p>
 
 <h2 id="python-gui-libraries">Python GUI libraries</h2>
 
@@ -290,7 +319,7 @@ can be used in conjunction with the <a href="https://build-system.fman.io/">fman
 <p>Its no use writing a GUI if it can only be used on a machine with Python already 
 installed, or only runs on Linux. Additional effort must be made to make it 
 cross-platform across Linux, Mac and Windows, and easily installed by anyone without 
-specific knowledge of Python tools such as <code class="language-plaintext highlighter-rouge">pip</code>.</p>
+specific knowledge of Python tools.</p>
 
 <p>There are a number of third-party libraries for writing cross-platform Python 
 applications, two examples are <a href="https://www.pyinstaller.org/">Pyinstaller</a>, and 
@@ -305,14 +334,14 @@ so I’d encourage you to have a look at what is available.</p>
   <h2 id="project-description">Project Description</h2>
 
   <p>Your group project is to design and implement a cross-platform Python GUI desktop 
-application that allows the user to specify and visualise one or more of the fractal 
-or biological patterns described in the textbook “The Algorithmic Beauty of Plants”. 
-The web application should feature UI controls to allow the user to choose patterns 
-and/or parameters, and should be as user-friendly as possible, incorporating 
-information on how to use the app and what each control is for, as well as background 
-information on what pattern is being visualised. The amount of features you 
-incorporate into your app is up to you and what you feel comfortable implementing in 
-the limited time you have (5 days).</p>
+application based around a particular research project. You can use one the suggested 
+projects or choose your own. The web application should feature UI controls to allow 
+the user to choose different parameters, models etc., and should be as user-friendly a 
+possible, incorporating information on how to use the app and what each control is 
+for, as well as background information on what is being displayed/visualised. The 
+amount of 
+features you incorporate into your app is up to you and what you feel comfortable 
+implementing in the limited time you have (5 days).</p>
 
   <p>If you have time, it is well worth investigating common design patterns for GUIs, such 
 as Model-View-Controller (MVC), Model-View-Presenter (MVP) or Model-View-ViewModel 
@@ -336,7 +365,7 @@ software supports). Please email these, along with the names of those in your gr
   <h2>Key Points</h2>
   <ul>
     
-    <li><p>Your group project is to implement and deploy a Python application to specify and visualise a number of fractal/biological patterns from the book “The Algorithmic Beauty of Plants”.</p>
+    <li><p>Your group project is to implement and deploy a Python desktop GUI application based around a particular research project. A couple of suggested project are provided, or you can make up your own</p>
 </li>
     
   </ul>
