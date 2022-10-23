@@ -88,12 +88,12 @@ Physics*
 Write a package to predicts planet surface temperature as the result of changing cloud 
 cover and land usage over a chosen period of time. A potential model to use is a two 
 layer model of the atmosphere (see for example 
-https://biocycle.atmos.colostate.edu/shiny/2layer/). The atmosphere is assumed 
-transparent to incoming radiation (in the visible range), but with a certain proportion 
-reflected (set by the albedo, α). The atmosphere absorbs and reradiates a proportion of 
-the outgoing radiation (in the infrared range) set by the emissivity (ϵ) of the two 
-atmospheric layers. The package solves for the temperature of the surface and the two 
-layers in the atmosphere.
+[https://biocycle.atmos.colostate.edu/shiny/2layer/](https://biocycle.atmos.colostate.edu/shiny/2layer/)). 
+The atmosphere is assumed transparent to incoming radiation (in the visible range), but 
+with a certain proportion reflected (set by the albedo, α). The atmosphere absorbs and 
+reradiates a proportion of the outgoing radiation (in the infrared range) set by the 
+emissivity (ϵ) of the two atmospheric layers. The package solves for the temperature of 
+the surface and the two layers in the atmosphere.
 
 
 ## Python GUI libraries
@@ -150,8 +150,8 @@ to make mocks of your GUI objects, then write tests for the non-GUI parts of you
 Your should hand-in your URL for the GitHub repository for each group, and stand-alone 
 executables for Linux, Mac OS X and Windows (or as many operating systems as your 
 software supports). Please email these, along with the names of those in your group, to 
-[martin.robinson@cs.ox.ac.uk](mailto:martin.robinson@cs.ox.ac.uk) by 5:30pm on Friday 
-29th Oct.
+[martin.robinson@dtc.ox.ac.uk](mailto:martin.robinson@dtc.ox.ac.uk) by 5:30pm on Friday 
+28th Oct.
 
 {% include links.md %}
 
