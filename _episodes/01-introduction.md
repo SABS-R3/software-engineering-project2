@@ -31,8 +31,8 @@ The other approach is to write a desktop application using one of the many GUI l
 using this approach.
 
 During the week, you will work in groups to implement an easily installable desktop GUI
-application using Python. Below are two possible projects that you can implement within 
-your application, or you could suggest something else.
+application using Python. Below are a few possible projects that you can implement 
+within your application, or you could suggest something else.
 
 ## Project 1 - Tree Modelling with L-Systems
 
@@ -79,6 +79,22 @@ Going beyond density-based calculations probably requires the use of additional 
 Dziewonski, A. M., & Anderson, D. L. (1981). Preliminary reference Earth model. Physics of the Earth and Planetary Interiors, 25, 297–356.
 
 Lognonné, P., Banerdt, W.B., Giardini, D. et al. SEIS: Insight’s Seismic Experiment for Internal Structure of Mars. Space Sci Rev 215, 12 (2019). https://doi.org/10.1007/s11214-018-0574-6
+
+## Project 3 - Climate Predictor Package
+
+*suggested by Matthew Wright, a NERC student in Atmospheric, Oceanic and Planetary 
+Physics*
+
+Write a package to predicts planet surface temperature as the result of changing cloud 
+cover and land usage over a chosen period of time. A potential model to use is a two 
+layer model of the atmosphere (see for example 
+https://biocycle.atmos.colostate.edu/shiny/2layer/). The atmosphere is assumed 
+transparent to incoming radiation (in the visible range), but with a certain proportion 
+reflected (set by the albedo, α). The atmosphere absorbs and reradiates a proportion of 
+the outgoing radiation (in the infrared range) set by the emissivity (ϵ) of the two 
+atmospheric layers. The package solves for the temperature of the surface and the two 
+layers in the atmosphere.
+
 
 ## Python GUI libraries
 
